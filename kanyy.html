@@ -1,0 +1,204 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ask Kanyy Out</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(120deg, #ffdde1, #ee9ca7, #fad0c4);
+      background-size: 600% 600%;
+      animation: gradientBG 15s ease infinite;
+      overflow: hidden;
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      text-align: center;
+      padding: 2rem 3rem;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 10;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #fff;
+      text-shadow: 0 0 15px rgba(255, 192, 203, 0.8);
+    }
+
+    .message {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      min-height: 60px;
+    }
+
+    .btn {
+      background: #ff4b6e;
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 0 20px rgba(255, 75, 110, 0.6);
+      animation: pulse 2s infinite;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      background: #ff174f;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 15px rgba(255, 75, 110, 0.6); }
+      50% { box-shadow: 0 0 35px rgba(255, 75, 110, 1); }
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 20px;
+      animation: float 8s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    /* Confetti / petals */
+    .petal {
+      position: fixed;
+      top: -10px;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      border-radius: 50%;
+      animation: fall 5s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10px) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+
+    /* Surprise messages */
+    .surprise {
+      display: none;
+      margin-top: 1rem;
+      font-size: 1.5rem;
+      font-family: 'Great Vibes', cursive;
+      text-shadow: 0 0 10px rgba(255,255,255,0.8);
+      animation: fadeIn 2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>My Kanyy ❤️</h1>
+    <p class="message" id="message"></p>
+    <button class="btn" onclick="showSequence()">Yes, I’ll be yours 💖</button>
+    <div id="surprise-container"></div>
+  </div>
+
+  <script>
+    const messages = "Will you be my forever, my love, my everything?";
+    let i = 0;
+    function typeWriter() {
+      if (i < messages.length) {
+        document.getElementById("message").innerHTML += messages.charAt(i);
+        i++;
+        setTimeout(typeWriter, 80);
+      }
+    }
+    window.onload = typeWriter;
+
+    // Floating hearts
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 15 + "px";
+      heart.style.animationDuration = Math.random() * 5 + 5 + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => { heart.remove(); }, 8000);
+    }
+    setInterval(createHeart, 600);
+
+    // Sequence of surprise messages
+    const surprises = [
+  "💌 My dearest Kanyy, this moment is for us...",
+  "🖋️ With every heartbeat, I choose you again and again.",
+  "🌹 You are my best chapter, my favorite story.",
+  "💫 You are not just my love, you are my forever home.",
+  "❤️ I love you endlessly, my Kanyy."
+];
+
+    function showSequence() {
+      // Petals animation
+      for (let i = 0; i < 30; i++) {
+        const petal = document.createElement("div");
+        petal.classList.add("petal");
+        petal.style.left = Math.random() * 100 + "vw";
+        petal.style.background = ["#ffb6c1", "#ffc0cb", "#fff0f5"][Math.floor(Math.random()*3)];
+        petal.style.animationDuration = Math.random() * 3 + 3 + "s";
+        document.body.appendChild(petal);
+        setTimeout(() => { petal.remove(); }, 5000);
+      }
+
+      // Start romantic background music
+      const music = new Audio("https://cdn.pixabay.com/download/audio/2022/10/10/audio_7ab5936a6a.mp3?filename=romantic-background-124476.mp3");
+      music.loop = true;
+      music.play();
+
+      // Show messages one by one
+      let delay = 0;
+      surprises.forEach((text, index) => {
+        setTimeout(() => {
+          const p = document.createElement("p");
+          p.classList.add("surprise");
+          p.textContent = text;
+          document.getElementById("surprise-container").appendChild(p);
+          p.style.display = "block";
+        }, delay);
+        delay += 2500;
+      });
+    }
+  </script>
+</body>
+</html>
